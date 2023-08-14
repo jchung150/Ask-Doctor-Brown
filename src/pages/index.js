@@ -82,12 +82,15 @@ export default function Home() {
               <Button onClick={handleReset} text="Reset" />
             </div>
 
-            <input
-              className="questionShow w-full block box-border bg-white h-24 p-4 border-2 border-gray-400 mb-5 rounded"
-              type="text"
-              value={transcript}
-              placeholder="Press start to record your question or type it here..."
-            />
+            <div className="questionShow overflow-auto w-full block box-border bg-white h-24 p-4 border-2 border-gray-400 mb-5 rounded">
+              {transcript ? (
+                transcript
+              ) : (
+                <span className="text-gray-400">
+                  Press "Start" to record your question...
+                </span>
+              )}
+            </div>
 
             <button
               onClick={handleSubmit}
