@@ -11,7 +11,6 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const { transcript, listening, resetTranscript } = useSpeechRecognition();
-  const [editableTranscript, setEditableTranscript] = useState("");
   const [answer, setAnswer] = useState("");
   const [isShow, setShow] = useState(false);
   const [name, setName] = useState("");
@@ -24,7 +23,7 @@ export default function Home() {
   };
   const handleSubmit = async () => {
     try {
-      const responseAnswer = await getAnswer(editableTranscript);
+      const responseAnswer = await getAnswer(transcript);
       setAnswer(responseAnswer);
       textToSpeech(responseAnswer);
     } catch (error) {
@@ -34,18 +33,8 @@ export default function Home() {
 
   const handleReset = () => {
     resetTranscript();
-    setEditableTranscript("");
     setAnswer("");
   };
-
-  useEffect(() => {
-    if (transcript) {
-      console.log("Transcript updated:", transcript);
-      setEditableTranscript(
-        (prevTranscript) => prevTranscript + " " + transcript
-      );
-    }
-  }, [transcript]);
 
   const options = {
     continuous: true,
@@ -94,10 +83,9 @@ export default function Home() {
             </div>
 
             <input
-              className="questionShow overflow-auto w-full block box-border bg-white h-24 p-4 border-2 border-gray-400 mb-5 rounded"
+              className="questionShow w-full block box-border bg-white h-24 p-4 border-2 border-gray-400 mb-5 rounded"
               type="text"
-              value={editableTranscript}
-              onChange={(e) => setEditableTranscript(e.target.value)}
+              value={transcript}
               placeholder="Press start to record your question or type it here..."
             />
 
