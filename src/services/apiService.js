@@ -1,10 +1,9 @@
 export async function getAnswer(question) {
   try {
     const response = await fetch(
-      "https://9pdjo9cu43.execute-api.us-east-1.amazonaws.com/dev",
+      "https://9pdjo9cu43.execute-api.us-east-1.amazonaws.com/dev/getanswer",
       {
         method: "POST",
-        mode: "no-cors",
         headers: {
           "Content-Type": "application/json",
         },
@@ -24,9 +23,8 @@ export async function getAnswer(question) {
 }
 
 export function textToSpeech(script) {
-  fetch("https://wmypv4sqq8.execute-api.us-east-1.amazonaws.com/dev", {
+  fetch("https://wmypv4sqq8.execute-api.us-east-1.amazonaws.com/dev/texttospeech", {
     method: "POST",
-    mode: "no-cors",
     headers: {
       "Content-Type": "application/json",
     },
