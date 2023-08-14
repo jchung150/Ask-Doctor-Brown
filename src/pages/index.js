@@ -40,7 +40,9 @@ export default function Home() {
 
   const handleSpeechResult = () => {
     console.log("Direct Transcript:", transcript);
-    setEditableTranscript(transcript);
+    setEditableTranscript(
+      (prevTranscript) => prevTranscript + " " + transcript
+    );
   };
 
   const options = {
