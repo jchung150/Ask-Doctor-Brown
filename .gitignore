@@ -1,0 +1,9 @@
+build/
+dist/
+node_modules/
+aws-exports.js
+awsconfiguration.json
+.secret-*
+**.sample
+node_modules
+node_modules

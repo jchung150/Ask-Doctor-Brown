@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import Button from "./component/Button";
-import { getAnswer, textToSpeech } from "./api/handler";
+import { getAnswer, textToSpeech } from "../services/apiService";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
