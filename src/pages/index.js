@@ -49,6 +49,7 @@ export default function Home() {
     continuous: true,
     language: "en-CA",
     onResult: handleSpeechResult,
+    onError: (error) => console.error("Speech Recognition Error:", error),
   };
 
   return (
