@@ -4,7 +4,7 @@ const Button = ({ onClick, text, type }) => {
     return (
       <button
         className="block 
-        border 
+        border
         border-gray-400
         bg-white
         rounded-lg

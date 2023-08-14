@@ -46,9 +46,10 @@ export default function Home() {
     <div>
       {isShow ? null : (
         <div className="flex flex-col h-screen justify-center items-center">
-          <div className="mb-5 text-3xl">Ask Dr. Moustache</div>
+          <Image src="./doctor_moustache.jpg" width={300} height={300} />
+          <div className="my-5 text-3xl">Ask Dr. Moustache</div>
           <input
-            className="mb-5 text-center h-10"
+            className="mb-5 text-center h-10 bg-gray-100 rounded-lg border border-gray-400"
             type="text"
             value={name}
             onChange={handleChange}
@@ -62,13 +63,16 @@ export default function Home() {
         <div className="container mx-auto px-1">
           <div className="p-8 text-center">
             <div className="mb-5 text-l font-sans">
-              Hi! {name}
-              <br></br>I am Doctor Moustache.
-              <br></br>Ask Me Any Question.
+              Hi there, <span className="font-bold">{name}</span>! 😊
+              <br></br>It's me, Doctor Moustache.
+              <br></br>Ready to chat? Just hit the "Start" button when you're
+              ready to ask your question. Done talking? Simply press "Stop". And
+              hey, if you ever want a do-over, "Reset" is right there for you!
             </div>
+            <hr />
 
             <p
-              className="pb-5 font-sans"
+              className="mt-5 pb-5 font-sans"
               style={{ color: listening ? "green" : "red" }}
             >
               {listening ? "Listening..." : "Microphone Off"}
@@ -82,12 +86,12 @@ export default function Home() {
               <Button onClick={handleReset} text="Reset" />
             </div>
 
-            <div className="questionShow overflow-auto w-full block box-border bg-white h-24 p-4 border-2 border-gray-400 mb-5 rounded">
+            <div className="questionShow overflow-auto w-full block box-border bg-white h-32 p-4 border-2 border-gray-400 mb-5 rounded">
               {transcript ? (
                 transcript
               ) : (
                 <span className="text-gray-400">
-                  Press "Start" to record your question...
+                  Your question will appear here...
                 </span>
               )}
             </div>
