@@ -5,7 +5,7 @@ import { getAnswer, textToSpeech } from "../services/apiService";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,17 +38,18 @@ export default function Home() {
     setAnswer("");
   };
 
-  const handleSpeechResult = () => {
-    console.log("Direct Transcript:", transcript);
-    setEditableTranscript(
-      (prevTranscript) => prevTranscript + " " + transcript
-    );
-  };
+  useEffect(() => {
+    if (transcript) {
+      console.log("Transcript updated:", transcript);
+      setEditableTranscript(
+        (prevTranscript) => prevTranscript + " " + transcript
+      );
+    }
+  }, [transcript]);
 
   const options = {
     continuous: true,
     language: "en-CA",
-    onResult: handleSpeechResult,
     onError: (error) => console.error("Speech Recognition Error:", error),
   };
 
