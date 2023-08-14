@@ -1,11 +1,21 @@
 export async function getAnswer(question) {
   try {
+    const preflightResponse = await fetch(
+      "https://9pdjo9cu43.execute-api.us-east-1.amazonaws.com/dev",
+      {
+        method: "OPTIONS",
+      }
+    );
+
+    if (!preflightResponse.ok) {
+      throw new Error("Preflight request failed");
+    }
     const response = await fetch(
       "https://9pdjo9cu43.execute-api.us-east-1.amazonaws.com/dev",
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           question: question,
@@ -24,14 +34,24 @@ export async function getAnswer(question) {
 
 export function textToSpeech(script) {
   fetch("https://wmypv4sqq8.execute-api.us-east-1.amazonaws.com/dev", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      script: script,
-    }),
+    method: "OPTIONS",
   })
+    .then((response) => {
+      if (!response.ok) throw new Error("Preflight request failed");
+
+      return fetch(
+        "https://wmypv4sqq8.execute-api.us-east-1.amazonaws.com/dev",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            script: script,
+          }),
+        }
+      );
+    })
     .then((response) => response.text()) // First get the base64 text response
     .then((audioBase64) => {
       const audioArrayBuffer = Uint8Array.from(atob(audioBase64), (c) =>
