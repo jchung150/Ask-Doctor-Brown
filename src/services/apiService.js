@@ -15,6 +15,7 @@ export async function getAnswer(question) {
     const data = await response.json();
     const answer = data.answer;
     console.log("Doc Brown Answered!");
+    console.log(answer);
     return answer;
   } catch (error) {
     console.error("An error occurred: ", error);
@@ -23,15 +24,18 @@ export async function getAnswer(question) {
 }
 
 export function textToSpeech(script) {
-  fetch("https://wmypv4sqq8.execute-api.us-east-1.amazonaws.com/dev/texttospeech", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      script: script,
-    }),
-  })
+  fetch(
+    "https://wmypv4sqq8.execute-api.us-east-1.amazonaws.com/dev/texttospeech",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        script: script,
+      }),
+    }
+  )
     .then((response) => response.text()) // First get the base64 text response
     .then((audioBase64) => {
       const audioArrayBuffer = Uint8Array.from(atob(audioBase64), (c) =>
