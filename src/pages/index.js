@@ -2,10 +2,8 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import Button from "./component/Button";
 import { getAnswer, textToSpeech } from "../services/apiService";
-import SpeechRecognition, {
-  useSpeechRecognition,
-} from "react-speech-recognition";
-import { useState, useEffect } from "react";
+import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,8 +37,8 @@ export default function Home() {
   };
 
   const handleSpeechResult = () => {
-    console.log("Direct Transcript:", transcript);
-    setEditableTranscript(transcript);
+    console.log("Direct Transcript:", editableTranscript);
+    setEditableTranscript(editableTranscript);
   };
 
   const options = {
