@@ -46,7 +46,7 @@ export default function Home() {
     <div>
       {isShow ? null : (
         <div className="flex flex-col h-screen justify-center items-center">
-          <div className="mb-5 text-3xl">Ask Doc Brown</div>
+          <div className="mb-5 text-3xl">Ask Dr. Moustache</div>
           <input
             className="mb-5 text-center h-10"
             type="text"
@@ -62,8 +62,8 @@ export default function Home() {
         <div className="container mx-auto px-1">
           <div className="p-8 text-center">
             <div className="mb-5 text-l font-sans">
-              Hello! {name}
-              <br></br>I am Doctor Brown.
+              Hi! {name}
+              <br></br>I am Doctor Moustache.
               <br></br>Ask Me Any Question.
             </div>
 
@@ -116,7 +116,7 @@ export default function Home() {
                 answer
               ) : (
                 <span className="text-gray-400">
-                  Doc Brown's answer will appear here...
+                  The answer will appear here...
                 </span>
               )}
             </div>
