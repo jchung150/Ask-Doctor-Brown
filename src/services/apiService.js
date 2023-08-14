@@ -45,7 +45,7 @@ export function textToSpeech(script) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        script: e,
+        script: script,
       }),
     }
   )
