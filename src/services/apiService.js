@@ -5,8 +5,7 @@ export async function getAnswer(question) {
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          "X-Preflight": "1",
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           question: question,
@@ -27,8 +26,7 @@ export function textToSpeech(script) {
   fetch("https://wmypv4sqq8.execute-api.us-east-1.amazonaws.com/dev", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      "X-Preflight": "1",
+      "Content-Type": "application/json"
     },
     body: JSON.stringify({
       script: script,
