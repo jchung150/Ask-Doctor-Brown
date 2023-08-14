@@ -13,7 +13,8 @@ export async function getAnswer(question) {
       }
     );
     const data = await response.json();
-    const answer = data.answer;
+    const innerData = JSON.parse(data.body);
+    const answer = innerData.answer;
     console.log("Doc Brown Answered!");
     console.log(answer);
     return answer;
@@ -36,7 +37,7 @@ export function textToSpeech(script) {
       }),
     }
   )
-    .then((response) => response.text()) // First get the base64 text response
+    .then((response) => response.text())
     .then((audioBase64) => {
       const audioArrayBuffer = Uint8Array.from(atob(audioBase64), (c) =>
         c.charCodeAt(0)
