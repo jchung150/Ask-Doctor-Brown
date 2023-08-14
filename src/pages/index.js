@@ -39,7 +39,7 @@ export default function Home() {
   };
 
   const handleSpeechResult = () => {
-    setEditableTranscript(speechTranscript);
+    setEditableTranscript(transcript);
   };
 
   const options = {
@@ -95,10 +95,6 @@ export default function Home() {
               onChange={(e) => setEditableTranscript(e.target.value)}
               placeholder="Press start to record your question or type it here..."
             />
-
-            {/* <div
-              className="questionShow overflow-auto w-full block box-border bg-white h-24 p-4 border-2 border-gray-400 mb-5 rounded"
-            >{transcript ? transcript: <span className="text-gray-400">Type or press start to record your question...</span>}</div> */}
 
             <button
               onClick={handleSubmit}
