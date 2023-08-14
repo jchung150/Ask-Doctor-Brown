@@ -12,12 +12,25 @@ export async function getAnswer(question) {
         }),
       }
     );
+
+    if (!response.ok) {
+      throw new Error(`Server responded with a status: ${response.status}`);
+    }
+
     const data = await response.json();
-    const innerData = JSON.parse(data.body);
-    const answer = innerData.answer;
-    console.log("Doc Brown Answered!");
-    console.log(answer);
-    return answer;
+
+    if (data && data.body) {
+      const innerData = JSON.parse(data.body);
+      const answer = innerData.answer;
+
+      console.log("Doc Brown Answered!");
+      console.log(answer);
+
+      return answer;
+    }
+
+    throw new Error("Unexpected response format");
+    
   } catch (error) {
     console.error("An error occurred: ", error);
     return null;
@@ -37,8 +50,16 @@ export function textToSpeech(script) {
       }),
     }
   )
-    .then((response) => response.text())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Server responded with a status: ${response.status}`);
+      }
+      return response.text();
+    })
     .then((audioBase64) => {
+      if (typeof audioBase64 !== 'string') {
+        throw new Error("Received data is not a valid base64 string");
+      }
       const audioArrayBuffer = Uint8Array.from(atob(audioBase64), (c) =>
         c.charCodeAt(0)
       );
@@ -50,3 +71,4 @@ export function textToSpeech(script) {
       console.error("An error occurred while synthesizing the speech: ", error)
     );
 }
+
