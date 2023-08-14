@@ -49,20 +49,12 @@ export function textToSpeech(script) {
       }),
     }
   )
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Server responded with a status: ${response.status}`);
-      }
-      return response.blob(); // Convert the binary data to a blob
-    })
-    .then((audioBlob) => {
+    .then(data => {
+      const audioBase64 = data.body;
+      const audioArrayBuffer = Uint8Array.from(atob(audioBase64), c => c.charCodeAt(0));
+      const audioBlob = new Blob([audioArrayBuffer], { type: "audio/mpeg" });
       const audioUrl = URL.createObjectURL(audioBlob);
-      new Audio(audioUrl).play(); // Play the blob using the Audio API
+      new Audio(audioUrl).play();
     })
-    .catch((error) => {
-      console.error(
-        "An error occurred while fetching or playing the audio: ",
-        error
-      );
-    });
+    .catch(error => console.error("An error occurred: ", error));
 }
