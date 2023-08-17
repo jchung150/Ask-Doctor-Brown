@@ -51,8 +51,6 @@
 
   - No further iterations until the prototype reaches completion.
 
-- \***\*Web Application Design\*\***
-
 - **Features & Priority score**
 
   - Voice recognition to transcribe user inputs on the screen, so they can visualize their questions (10)
