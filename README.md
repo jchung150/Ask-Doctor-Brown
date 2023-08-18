@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img width="298" alt="doctor brown" src="./public/doctor_moustache.jpg">
+  <img width="298" alt="doctorMoustache" src="./public/doctorMoustache.jpg">
 
   <h3 align="center">Doctor Brown</h3>
   <p align="center">
@@ -37,7 +37,7 @@
   - **Database**: No database is utilized for this project.
 
 <br>
-  <img width="600" alt="docBrown2_highleveldesign" src="./public/docBrown2_highleveldesign.png">
+  <img width="600" alt="docBrown2 High Level Design" src="./public/docBrown2HighLevelDesign.png">
 
 - **Timeline**
 
@@ -81,4 +81,4 @@
 
 - **Screenshots**
 
-  <img width="290" alt="Screenshot_1" src="./public/Screenshot_1.png"> <img width="295" alt="Screenshot_2" src="./public/Screenshot_2.png">
+  <img width="290" alt="Screenshot1" src="./public/screenShot1.png"> <img width="295" alt="Screenshot2" src="./public/screenShot2.png">
