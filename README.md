@@ -2,7 +2,7 @@
 
   <img width="298" alt="doctorMoustache" src="./public/doctorMoustache.jpg">
 
-  <h3 align="center">Doctor Brown</h3>
+  <h3 align="center">Ask Doctor Brown</h3>
   <p align="center">
     This is a web application utilizing Next.js and Tailwind CSS, hosted securely on AWS.
     <br />
